@@ -2,7 +2,9 @@
   "name": "kastellix",
   "version": "0.1.0",
   "private": false,
-  "main": "dist/index.html",
+  "main": "dist/Kastellix.umd.js",
+  "module": "dist/Kastellix.common.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "author": "Tjut",
   "files": [
