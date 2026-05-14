@@ -1,6 +1,27 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+/**
+ * A dropdown menu component.
+ * 
+ * @description
+ * Displays a list of actions or options when triggered by an element (e.g., a button). 
+ * Handles click-outside behavior automatically.
+ * 
+ * @example
+ * ```vue
+ * <Dropdown>
+ *   <template #trigger>
+ *     <Button>Options</Button>
+ *   </template>
+ *   <DropdownItem @click="handleEdit">Edit</DropdownItem>
+ *   <DropdownItem @click="handleDelete">Delete</DropdownItem>
+ * </Dropdown>
+ * ```
+ * 
+ * @slot default — DropdownItem components
+ * @slot trigger — The element that toggles the dropdown
+ */
 const isOpen = ref(false);
 const dropdownRef = ref<HTMLElement | null>(null);
 

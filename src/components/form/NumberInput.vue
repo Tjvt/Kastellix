@@ -1,14 +1,42 @@
 <script setup lang="ts">
+/**
+ * A numeric input field with increment/decrement buttons.
+ * 
+ * @description
+ * Provides a specialized input for numeric values, supporting minimum and maximum constraints, 
+ * step intervals, and manual increment/decrement controls.
+ * 
+ * @example
+ * ```vue
+ * <NumberInput 
+ *   v-model="quantity" 
+ *   label="Quantity" 
+ *   :min="0" 
+ *   :max="10" 
+ *   :step="1" 
+ * />
+ * ```
+ */
 interface Props {
+  /** The current numeric value. @default null */
   modelValue?: number | null;
+  /** The label displayed above the input. */
   label?: string;
+  /** The minimum allowed value. */
   min?: number;
+  /** The maximum allowed value. */
   max?: number;
+  /** The amount to increment or decrement by. @default 1 */
   step?: number;
+  /** The placeholder text when the input is empty. @default '' */
   placeholder?: string;
+  /** Validation error message. */
   error?: string;
+  /** Helper text displayed below the input. */
   hint?: string;
+  /** Whether the input is disabled. @default false */
   disabled?: boolean;
+  /** Whether the input is required. @default false */
   required?: boolean;
 }
 
@@ -21,7 +49,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: number | null): void;
+  /** Fires when the numeric value changes. Payload: new number or null. */
+  'update:modelValue': [value: number | null];
 }>();
 
 const onInput = (event: Event) => {

@@ -1,7 +1,23 @@
 <script setup lang="ts">
 import { inject, type Ref } from 'vue';
 
+/**
+ * A content panel associated with a Tab.
+ * 
+ * @description
+ * Only visible when its `value` matches the currently active tab in the parent `Tabs` component.
+ * 
+ * @example
+ * ```vue
+ * <TabPanel value="account">
+ *   <p>Account details go here...</p>
+ * </TabPanel>
+ * ```
+ * 
+ * @slot default — The panel content
+ */
 interface Props {
+  /** A unique identifier that links this panel to a specific `Tab`. */
   value: string | number;
 }
 

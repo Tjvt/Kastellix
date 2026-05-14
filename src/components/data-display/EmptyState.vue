@@ -1,6 +1,28 @@
 <script setup lang="ts">
+/**
+ * A component for displaying a placeholder when no data is available.
+ * 
+ * @description
+ * Used to provide feedback and potentially a call to action when a list 
+ * or section is empty.
+ * 
+ * @example
+ * ```vue
+ * <EmptyState 
+ *   title="No projects found" 
+ *   description="Get started by creating your first project."
+ * >
+ *   <Button variant="primary">Create Project</Button>
+ * </EmptyState>
+ * ```
+ * 
+ * @slot default — Main content area, usually for action buttons
+ * @slot icon — Custom icon to display at the top
+ */
 interface Props {
+  /** The title of the empty state. @default 'No data found' */
   title?: string;
+  /** A longer description providing more context. @default "You haven't added anything yet." */
   description?: string;
 }
 

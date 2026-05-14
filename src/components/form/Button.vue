@@ -1,11 +1,33 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * Interactive button component for actions and triggers.
+ * 
+ * @description
+ * Supports multiple visual variants, sizes, and states including loading and disabled.
+ * Automatically handles loading spinner and icon placement.
+ * 
+ * @example
+ * ```vue
+ * <Button variant="primary" size="md" @click="handleClick">
+ *   Submit
+ * </Button>
+ * ```
+ * 
+ * @slot default — The button label or content
+ * @slot icon — Optional icon to display before the label (hidden when loading)
+ */
 interface Props {
+  /** The visual style of the button. @default 'primary' */
   variant?: 'primary' | 'secondary' | 'ghost' | 'destructive';
+  /** The size of the button. @default 'md' */
   size?: 'sm' | 'md' | 'lg';
+  /** Whether the button is in a loading state. Shows a spinner and disables interaction. @default false */
   loading?: boolean;
+  /** Whether the button is disabled. @default false */
   disabled?: boolean;
+  /** The HTML button type. @default 'button' */
   type?: 'button' | 'submit' | 'reset';
 }
 

@@ -5,14 +5,41 @@ interface Option {
   disabled?: boolean;
 }
 
+/**
+ * Standard dropdown selection component.
+ * 
+ * @description
+ * A wrapper around the native HTML select element with custom styling 
+ * and support for labels, hints, and error states.
+ * 
+ * @example
+ * ```vue
+ * <Select
+ *   v-model="country"
+ *   label="Country"
+ *   :options="[
+ *     { label: 'United States', value: 'US' },
+ *     { label: 'Canada', value: 'CA' }
+ *   ]"
+ * />
+ * ```
+ */
 interface Props {
+  /** The currently selected value. @default '' */
   modelValue?: string | number;
+  /** List of options to display in the dropdown. */
   options: Option[];
+  /** The label displayed above the select field. */
   label?: string;
+  /** The placeholder text shown when no value is selected. @default 'Select an option' */
   placeholder?: string;
+  /** Validation error message. */
   error?: string;
+  /** Helper text displayed below the field. */
   hint?: string;
+  /** Whether the field is disabled. @default false */
   disabled?: boolean;
+  /** Whether the field is required. @default false */
   required?: boolean;
 }
 
@@ -24,7 +51,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number): void;
+  /** Fires when the selected value changes. Payload: new value. */
+  'update:modelValue': [value: string | number];
 }>();
 
 const onChange = (event: Event) => {

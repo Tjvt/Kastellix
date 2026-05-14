@@ -1,6 +1,22 @@
 <script setup lang="ts">
+/**
+ * An individual item within a Breadcrumb trail.
+ * 
+ * @description
+ * Represents a single link or current location in the breadcrumb path.
+ * 
+ * @example
+ * ```vue
+ * <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+ * ```
+ * 
+ * @slot default — The label of the breadcrumb item
+ * @slot separator — Custom separator icon/content
+ */
 interface Props {
+  /** The URL the item links to. If not provided, the item renders as a span. */
   href?: string;
+  /** Whether this item represents the current page. @default false */
   active?: boolean;
 }
 

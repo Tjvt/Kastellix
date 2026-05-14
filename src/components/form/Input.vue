@@ -1,12 +1,41 @@
 <script setup lang="ts">
+/**
+ * Standard text input field.
+ * 
+ * @description
+ * A versatile input component supporting various types (text, email, password, etc.), 
+ * labels, helper text, and validation error states.
+ * 
+ * @example
+ * ```vue
+ * <Input 
+ *   v-model="email" 
+ *   label="Email Address" 
+ *   type="email" 
+ *   placeholder="you@example.com" 
+ *   required 
+ * />
+ * ```
+ * 
+ * @slot prefix — Icon or text to display before the input value
+ * @slot suffix — Icon or text to display after the input value
+ */
 interface Props {
+  /** The value of the input. @default '' */
   modelValue?: string | number;
+  /** The label displayed above the input. */
   label?: string;
+  /** The HTML input type (e.g., 'text', 'password', 'email', 'number'). @default 'text' */
   type?: string;
+  /** The placeholder text when the input is empty. @default '' */
   placeholder?: string;
+  /** Validation error message. If provided, the input will be styled with a red border. */
   error?: string;
+  /** Helper text displayed below the input (if no error is present). */
   hint?: string;
+  /** Whether the input is disabled. @default false */
   disabled?: boolean;
+  /** Whether the input is required. Displays an asterisk if a label is present. @default false */
   required?: boolean;
 }
 
@@ -19,7 +48,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
+  /** Fires when the input value changes. Payload: new value. */
+  'update:modelValue': [value: string];
 }>();
 
 const onInput = (event: Event) => {

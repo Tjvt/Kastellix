@@ -1,8 +1,30 @@
 <script setup lang="ts">
+/**
+ * A wrapper component for form controls to provide consistent labeling and messaging.
+ * 
+ * @description
+ * Standardizes the layout for form fields, including label, required indicator, 
+ * helper text (hint), and validation error messages.
+ * 
+ * @example
+ * ```vue
+ * <FormField label="Username" hint="Enter your preferred username" required>
+ *   <Input v-model="username" />
+ * </FormField>
+ * ```
+ * 
+ * @slot default — The form control (Input, Select, etc.)
+ * @slot error — Custom error content
+ * @slot hint — Custom hint content
+ */
 interface Props {
+  /** The label displayed above the form control. */
   label?: string;
+  /** Helper text displayed below the form control. */
   hint?: string;
+  /** Validation error message. */
   error?: string;
+  /** Whether the field is required. Displays an asterisk if a label is present. */
   required?: boolean;
 }
 

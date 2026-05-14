@@ -1,7 +1,21 @@
 <script setup lang="ts">
 import { inject, type Ref } from 'vue';
 
+/**
+ * An individual tab trigger.
+ * 
+ * @description
+ * When clicked, activates the corresponding `TabPanel`. Must be used inside `TabList`.
+ * 
+ * @example
+ * ```vue
+ * <Tab value="account">Account Settings</Tab>
+ * ```
+ * 
+ * @slot default — The tab label
+ */
 interface Props {
+  /** A unique identifier for the tab. Must match the `value` of the corresponding `TabPanel`. */
   value: string | number;
 }
 

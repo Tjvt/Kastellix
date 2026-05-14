@@ -1,6 +1,22 @@
 <script setup lang="ts">
+/**
+ * A component for displaying inline or block-level code.
+ * 
+ * @description
+ * Formats text using a monospace font and background to distinguish code snippets from surrounding text.
+ * 
+ * @example
+ * ```vue
+ * <Code block code="const x = 1;" />
+ * <p>Use <Code>npm install</Code> to start.</p>
+ * ```
+ * 
+ * @slot default — The code content (overrides the `code` prop)
+ */
 interface Props {
+  /** Whether to render as a block-level element (`pre`) instead of inline (`code`). @default false */
   block?: boolean;
+  /** The code snippet to display. */
   code?: string;
 }
 

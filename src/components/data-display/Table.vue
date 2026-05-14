@@ -5,15 +5,36 @@ interface Column {
   sortable?: boolean;
 }
 
+/**
+ * A responsive data table component.
+ * 
+ * @description
+ * Renders a tabular set of data with support for custom cell rendering via slots 
+ * and optional column sorting.
+ * 
+ * @example
+ * ```vue
+ * <Table 
+ *   :columns="[{ key: 'name', label: 'Name', sortable: true }]" 
+ *   :data="[{ name: 'John Doe' }]" 
+ *   @sort="handleSort"
+ * />
+ * ```
+ * 
+ * @slot cell-{key} — Dynamic slot for custom cell rendering. Props: `row`, `value`
+ */
 interface Props {
+  /** The configuration for table columns. */
   columns: Column[];
+  /** The data to be displayed in the table rows. */
   data: any[];
 }
 
 defineProps<Props>();
 
 const emit = defineEmits<{
-  (e: 'sort', key: string): void;
+  /** Fires when a sortable column header is clicked. Payload: the column key. */
+  sort: [key: string];
 }>();
 </script>
 

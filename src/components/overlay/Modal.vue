@@ -1,9 +1,35 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 
+/**
+ * A modal dialog component.
+ * 
+ * @description
+ * Displays a dialog box on top of the main content, requiring user interaction. 
+ * Supports various sizes, header/footer slots, and handles Escape key closure 
+ * and body scroll locking.
+ * 
+ * @example
+ * ```vue
+ * <Modal v-model="showDialog" title="Confirm Action" size="sm">
+ *   <p>Are you sure you want to proceed?</p>
+ *   <template #footer>
+ *     <Button variant="ghost" @click="showDialog = false">Cancel</Button>
+ *     <Button variant="primary" @click="confirm">Confirm</Button>
+ *   </template>
+ * </Modal>
+ * ```
+ * 
+ * @slot default — Main body content
+ * @slot header — Custom header content (overrides `title` prop)
+ * @slot footer — Content for the bottom action bar
+ */
 interface Props {
+  /** Whether the modal is visible. */
   modelValue: boolean;
+  /** The title displayed in the modal header. */
   title?: string;
+  /** The maximum width of the modal. @default 'md' */
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
 }
 
@@ -12,7 +38,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
+  /** Fires when the modal's visibility changes. Payload: new visibility state. */
+  'update:modelValue': [value: boolean];
 }>();
 
 const close = () => {

@@ -1,6 +1,20 @@
 <script setup lang="ts">
+/**
+ * A visual separator between content sections.
+ * 
+ * @description
+ * Dividers help organize content by providing a visual break. 
+ * Supports both horizontal and vertical orientations, and optional text labels for horizontal dividers.
+ * 
+ * @example
+ * ```vue
+ * <Divider label="OR" />
+ * ```
+ */
 interface Props {
+  /** The orientation of the divider. @default 'horizontal' */
   orientation?: 'horizontal' | 'vertical';
+  /** Optional text to display in the center of a horizontal divider. */
   label?: string;
 }
 

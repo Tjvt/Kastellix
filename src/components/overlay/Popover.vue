@@ -1,6 +1,29 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+/**
+ * A popover component for displaying floating content.
+ * 
+ * @description
+ * Similar to a tooltip but can contain more complex content like forms or lists. 
+ * Triggered by clicking an element and handles click-outside behavior.
+ * 
+ * @example
+ * ```vue
+ * <Popover>
+ *   <template #trigger>
+ *     <Button>More Info</Button>
+ *   </template>
+ *   <div class="space-y-2">
+ *     <h4 class="font-medium">Details</h4>
+ *     <p class="text-sm text-gray-500">More complex information here...</p>
+ *   </div>
+ * </Popover>
+ * ```
+ * 
+ * @slot default — The content to display inside the popover
+ * @slot trigger — The element that toggles the popover
+ */
 const isOpen = ref(false);
 const popoverRef = ref<HTMLElement | null>(null);
 

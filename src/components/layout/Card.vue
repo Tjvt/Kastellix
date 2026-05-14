@@ -1,7 +1,32 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A container component for grouping content with a border and shadow.
+ * 
+ * @description
+ * Cards are used to group related information and actions together. 
+ * They support optional header and footer slots.
+ * 
+ * @example
+ * ```vue
+ * <Card shadow="lg">
+ *   <template #header>
+ *     <h3>Card Title</h3>
+ *   </template>
+ *   <p>This is the main content of the card.</p>
+ *   <template #footer>
+ *     <Button variant="primary">Action</Button>
+ *   </template>
+ * </Card>
+ * ```
+ * 
+ * @slot default — Main body content of the card
+ * @slot header — Optional content at the top of the card
+ * @slot footer — Optional content at the bottom of the card
+ */
 interface Props {
+  /** The shadow depth of the card. @default 'md' */
   shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
 

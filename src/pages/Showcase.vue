@@ -116,6 +116,7 @@ const showToast = (variant: 'success' | 'error' | 'info' | 'warning') => {
                     <Button loading>Loading</Button>
                     <Button disabled>Disabled</Button>
                     <Button size="sm">Small</Button>
+                    <Button size="md">Medium</Button>
                     <Button size="lg">Large</Button>
                   </Stack>
                 </FormField>

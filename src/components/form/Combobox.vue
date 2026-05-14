@@ -7,14 +7,41 @@ interface Option {
   disabled?: boolean;
 }
 
+/**
+ * A searchable dropdown selection component.
+ * 
+ * @description
+ * Combines a button-triggered dropdown with an internal search input to filter 
+ * and select from a list of options.
+ * 
+ * @example
+ * ```vue
+ * <Combobox
+ *   v-model="selectedUser"
+ *   label="User"
+ *   :options="[
+ *     { label: 'Alice', value: '1' },
+ *     { label: 'Bob', value: '2' }
+ *   ]"
+ * />
+ * ```
+ */
 interface Props {
+  /** The currently selected value. @default null */
   modelValue?: string | number | null;
+  /** List of options to filter and select from. */
   options: Option[];
+  /** The label displayed above the combobox. */
   label?: string;
+  /** The placeholder text shown when no value is selected. @default 'Search option...' */
   placeholder?: string;
+  /** Validation error message. */
   error?: string;
+  /** Helper text displayed below the field. */
   hint?: string;
+  /** Whether the field is disabled. @default false */
   disabled?: boolean;
+  /** Whether the field is required. @default false */
   required?: boolean;
 }
 
@@ -26,7 +53,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number | null): void;
+  /** Fires when the selected value changes. Payload: new value or null. */
+  'update:modelValue': [value: string | number | null];
 }>();
 
 const isOpen = ref(false);

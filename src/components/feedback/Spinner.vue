@@ -1,8 +1,21 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * An animated loading spinner component.
+ * 
+ * @description
+ * Used to indicate a background process or loading state.
+ * 
+ * @example
+ * ```vue
+ * <Spinner size="lg" color="text-red-500" />
+ * ```
+ */
 interface Props {
+  /** The size of the spinner. @default 'md' */
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** The color of the spinner. Supports Tailwind text color classes. @default 'text-blue-600' */
   color?: string;
 }
 

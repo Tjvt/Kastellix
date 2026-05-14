@@ -1,11 +1,33 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * An avatar component for displaying user profile pictures or initials.
+ * 
+ * @description
+ * Supports multiple sizes, fallback to initials if image source is missing, 
+ * and an optional status indicator.
+ * 
+ * @example
+ * ```vue
+ * <Avatar 
+ *   src="https://example.com/photo.jpg" 
+ *   name="John Doe" 
+ *   status="online" 
+ *   size="lg" 
+ * />
+ * ```
+ */
 interface Props {
+  /** The URL of the avatar image. */
   src?: string;
+  /** Accessible alt text for the image. Falls back to `name` if not provided. */
   alt?: string;
+  /** The name of the user. Used to generate initials if `src` is missing. */
   name?: string;
+  /** The size of the avatar. @default 'md' */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  /** Optional status indicator. @values 'online', 'offline', 'away', 'busy' */
   status?: 'online' | 'offline' | 'away' | 'busy';
 }
 

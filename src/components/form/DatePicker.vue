@@ -1,12 +1,36 @@
 <script setup lang="ts">
+/**
+ * A date picker component using the native browser date input.
+ * 
+ * @description
+ * Provides a standardized way to select dates, with support for labels, 
+ * range constraints (min/max), and validation states.
+ * 
+ * @example
+ * ```vue
+ * <DatePicker 
+ *   v-model="birthDate" 
+ *   label="Date of Birth" 
+ *   max="2023-12-31" 
+ * />
+ * ```
+ */
 interface Props {
+  /** The selected date string in YYYY-MM-DD format. @default '' */
   modelValue?: string;
+  /** The label displayed above the input. */
   label?: string;
+  /** The minimum allowed date (YYYY-MM-DD). */
   min?: string;
+  /** The maximum allowed date (YYYY-MM-DD). */
   max?: string;
+  /** Validation error message. */
   error?: string;
+  /** Helper text displayed below the input. */
   hint?: string;
+  /** Whether the input is disabled. @default false */
   disabled?: boolean;
+  /** Whether the input is required. @default false */
   required?: boolean;
 }
 
@@ -17,7 +41,8 @@ withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
+  /** Fires when the date value changes. Payload: new date string. */
+  'update:modelValue': [value: string];
 }>();
 
 const onInput = (event: Event) => {
