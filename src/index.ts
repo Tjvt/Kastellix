@@ -1,10 +1,11 @@
+import type { App } from 'vue';
 import * as components from './components';
 
-const componentList = components?.default;
+const componentList = (components as any)?.default;
 const KastellixComponents = {
-    install(Vue) {
+    install(app: App) {
         Object.keys(componentList).forEach(name => {
-            Vue.component(name, componentList[name]);
+            app.component(name, componentList[name]);
         })
     }
 };
