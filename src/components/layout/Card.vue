@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 /**
  * A container component for grouping content with a border and shadow.
  * 
@@ -37,21 +35,21 @@ const props = withDefaults(defineProps<Props>(), {
 const shadowClasses = {
   none: 'shadow-none',
   sm: 'shadow-sm',
-  md: 'shadow-md',
-  lg: 'shadow-lg',
+  md: 'shadow-panel',
+  lg: 'shadow-soft',
   xl: 'shadow-xl',
 };
 </script>
 
 <template>
-  <div :class="['rounded-xl border border-gray-200 bg-white text-gray-950 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50', shadowClasses[shadow]]">
-    <div v-if="$slots.header" class="flex flex-col space-y-1.5 p-6 border-b border-gray-100 dark:border-gray-800">
+  <div :class="['rounded-xl border border-slate-200 bg-white text-slate-950 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50', shadowClasses[shadow]]">
+    <div v-if="$slots.header" class="flex flex-col space-y-1.5 border-b border-slate-100 p-6 dark:border-slate-800">
       <slot name="header"></slot>
     </div>
     <div class="p-6">
       <slot></slot>
     </div>
-    <div v-if="$slots.footer" class="flex items-center p-6 pt-0 border-t border-gray-100 dark:border-gray-800 pt-6">
+    <div v-if="$slots.footer" class="flex items-center border-t border-slate-100 p-6 dark:border-slate-800">
       <slot name="footer"></slot>
     </div>
   </div>

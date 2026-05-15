@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, watch } from 'vue';
 
 /**
  * A modal dialog component.
@@ -51,7 +51,7 @@ const sizeClasses = {
   md: 'max-w-md',
   lg: 'max-w-lg',
   xl: 'max-w-xl',
-  full: 'max-w-[95vw]',
+  full: 'max-w-[96vw]',
 };
 
 // Handle Escape key
@@ -82,7 +82,7 @@ watch(() => props.modelValue, (isOpen) => {
 <template>
   <Teleport to="body">
     <Transition
-      enter-active-class="transition duration-300 ease-out"
+      enter-active-class="transition duration-300 ease-swift-out"
       enter-from-class="opacity-0"
       enter-to-class="opacity-100"
       leave-active-class="transition duration-200 ease-in"
@@ -91,24 +91,25 @@ watch(() => props.modelValue, (isOpen) => {
     >
       <div v-if="modelValue" class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" @click="close"></div>
+        <div class="absolute inset-0 bg-slate-950/55 backdrop-blur-sm" @click="close"></div>
 
         <!-- Dialog -->
         <div
           :class="[
-            'relative w-full rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-800 dark:bg-gray-950',
+            'relative w-full rounded-xl border border-slate-200 bg-white shadow-panel dark:border-slate-800 dark:bg-slate-950',
             sizeClasses[size]
           ]"
           role="dialog"
           aria-modal="true"
         >
-          <div class="flex items-center justify-between border-b border-gray-100 p-4 dark:border-gray-800">
-            <h3 class="text-lg font-semibold dark:text-gray-50">
+          <div class="flex items-center justify-between border-b border-slate-100 p-4 dark:border-slate-800">
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-50">
               <slot name="header">{{ title }}</slot>
             </h3>
             <button
               @click="close"
-              class="rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:ring-offset-gray-950"
+              class="rounded-md p-1 text-slate-500 ring-offset-white transition-colors duration-200 hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100 dark:ring-offset-slate-950"
+              aria-label="Close modal"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
@@ -118,7 +119,7 @@ watch(() => props.modelValue, (isOpen) => {
             <slot></slot>
           </div>
 
-          <div v-if="$slots.footer" class="flex items-center justify-end gap-2 border-t border-gray-100 p-4 dark:border-gray-800">
+          <div v-if="$slots.footer" class="flex items-center justify-end gap-2 border-t border-slate-100 p-4 dark:border-slate-800">
             <slot name="footer"></slot>
           </div>
         </div>

@@ -15,13 +15,16 @@ import { computed } from 'vue';
 interface Props {
   /** The size of the spinner. @default 'md' */
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  /** The color of the spinner. Supports Tailwind text color classes. @default 'text-blue-600' */
+  /** The color of the spinner. Supports Tailwind text color classes. @default 'text-brand-600' */
   color?: string;
+  /** Accessible label announced by screen readers. @default 'Loading' */
+  label?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
-  color: 'text-blue-600',
+  color: 'text-brand-600',
+  label: 'Loading',
 });
 
 const sizeClasses = {
@@ -32,7 +35,7 @@ const sizeClasses = {
 };
 
 const classes = computed(() => [
-  'animate-spin rounded-full border-solid border-current border-t-transparent',
+  'animate-spin rounded-full border-solid border-current border-r-transparent',
   sizeClasses[props.size],
   props.color,
 ]);
@@ -40,6 +43,6 @@ const classes = computed(() => [
 
 <template>
   <div :class="classes" role="status">
-    <span class="sr-only">Loading...</span>
+    <span class="sr-only">{{ label }}</span>
   </div>
 </template>
