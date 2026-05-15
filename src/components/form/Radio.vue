@@ -1,11 +1,27 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A radio button component for selecting a single option from a set.
+ * 
+ * @description
+ * Usually used within a `RadioGroup` but can also be used independently.
+ * 
+ * @example
+ * ```vue
+ * <Radio v-model="selected" value="option1" label="Option 1" />
+ * ```
+ */
 interface Props {
+  /** The currently selected value in the group. */
   modelValue?: string | number | boolean;
+  /** The unique value represented by this radio button. */
   value: string | number | boolean;
+  /** The name attribute for the underlying input element. */
   name?: string;
+  /** The label displayed next to the radio button. */
   label?: string;
+  /** Whether the radio button is disabled. @default false */
   disabled?: boolean;
 }
 
@@ -14,7 +30,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number | boolean): void;
+  /** Fires when the radio button is selected. Payload: the value of this radio button. */
+  'update:modelValue': [value: string | number | boolean];
 }>();
 
 const isChecked = computed(() => props.modelValue === props.value);

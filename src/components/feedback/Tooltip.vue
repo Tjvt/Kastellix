@@ -1,8 +1,26 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
+/**
+ * A tooltip component for displaying extra information on hover or focus.
+ * 
+ * @description
+ * Wraps an element and shows a brief text message when the user hovers over 
+ * or focuses that element.
+ * 
+ * @example
+ * ```vue
+ * <Tooltip content="Edit profile" placement="right">
+ *   <Button icon="edit" />
+ * </Tooltip>
+ * ```
+ * 
+ * @slot default — The element that triggers the tooltip
+ */
 interface Props {
+  /** The text content to display inside the tooltip. */
   content: string;
+  /** The preferred placement of the tooltip relative to the trigger. @default 'top' */
   placement?: 'top' | 'bottom' | 'left' | 'right';
 }
 

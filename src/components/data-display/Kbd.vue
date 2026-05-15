@@ -1,4 +1,17 @@
 <script setup lang="ts">
+/**
+ * A keyboard key component for displaying shortcuts.
+ * 
+ * @description
+ * Used to indicate keyboard input or shortcuts in documentation or user interfaces.
+ * 
+ * @example
+ * ```vue
+ * <p>Press <Kbd>Ctrl</Kbd> + <Kbd>S</Kbd> to save.</p>
+ * ```
+ * 
+ * @slot default — The key label (e.g., 'Cmd', 'Enter')
+ */
 </script>
 
 <template>

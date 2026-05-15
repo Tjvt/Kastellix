@@ -1,9 +1,27 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A pagination component for navigating multi-page content.
+ * 
+ * @description
+ * Provides a set of controls to move between pages, including previous/next 
+ * buttons and numbered page links with ellipsis for large ranges.
+ * 
+ * @example
+ * ```vue
+ * <Pagination 
+ *   v-model:current-page="page" 
+ *   :total-pages="10" 
+ * />
+ * ```
+ */
 interface Props {
+  /** The current active page (1-indexed). */
   currentPage: number;
+  /** The total number of pages available. */
   totalPages: number;
+  /** The number of page links to show on either side of the current page. @default 1 */
   siblingCount?: number;
 }
 
@@ -12,7 +30,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:currentPage', page: number): void;
+  /** Fires when the current page changes. Payload: the new page number. */
+  'update:currentPage': [page: number];
 }>();
 
 const range = (start: number, end: number) => {

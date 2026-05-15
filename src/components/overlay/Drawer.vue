@@ -1,9 +1,32 @@
 <script setup lang="ts">
 import { watch } from 'vue';
 
+/**
+ * A slide-out panel component.
+ * 
+ * @description
+ * Draws out from the edge of the screen to reveal additional content or actions. 
+ * Supports all four sides and includes a title, close button, and optional footer.
+ * 
+ * @example
+ * ```vue
+ * <Drawer v-model="isOpen" title="Settings" side="right">
+ *   <p>Drawer content goes here...</p>
+ *   <template #footer>
+ *     <Button @click="save">Save</Button>
+ *   </template>
+ * </Drawer>
+ * ```
+ * 
+ * @slot default — Main content area
+ * @slot footer — Optional content area at the bottom
+ */
 interface Props {
+  /** Whether the drawer is visible. */
   modelValue: boolean;
+  /** The side of the screen the drawer slides out from. @default 'right' */
   side?: 'top' | 'right' | 'bottom' | 'left';
+  /** The title displayed in the drawer header. */
   title?: string;
 }
 
@@ -12,7 +35,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
+  /** Fires when the drawer's visibility changes. Payload: new visibility state. */
+  'update:modelValue': [value: boolean];
 }>();
 
 const close = () => {

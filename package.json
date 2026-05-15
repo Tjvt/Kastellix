@@ -14,9 +14,10 @@
     "serve": "vue-cli-service serve",
     "dev": "npm run serve",
     "build": "npm run build:lib && npm run build:style",
-    "build:lib": "NODE_OPTIONS=--no-deprecation vue-cli-service build --target lib --name Kastellix src/index.ts",
-    "build:style": "postcss src/assets/tailwind.css -o dist/style.css",
-    "lint": "vue-cli-service lint --no-fix"
+    "build:lib": "vue-cli-service build --target lib --name Kastellix src/index.ts",
+    "build:style": "tailwindcss -i src/assets/tailwind.css -o dist/style.css --minify",
+    "lint": "vue-cli-service lint --no-fix",
+    "format": "prettier --write \"src/**/*.{ts,vue,css,md}\""
   },
   "dependencies": {
     "core-js": "^3.49.0",
@@ -33,6 +34,7 @@
     "eslint": "9.26.0",
     "eslint-plugin-vue": "^8.7.1",
     "postcss": "^8.5.14",
+    "prettier": "^3.5.3",
     "tailwindcss": "^3.4.19",
     "typescript": "^6.0.3"
   },

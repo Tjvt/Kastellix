@@ -1,8 +1,27 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
+/**
+ * An alert component for displaying important messages.
+ * 
+ * @description
+ * Alerts provide contextual feedback messages for typical user actions 
+ * with a handful of available and flexible alert messages.
+ * 
+ * @example
+ * ```vue
+ * <Alert variant="success" dismissable>
+ *   Your changes have been saved successfully!
+ * </Alert>
+ * ```
+ * 
+ * @slot default — The main content of the alert
+ * @slot icon — Optional icon to display at the start of the alert
+ */
 interface Props {
+  /** The visual variant of the alert. @default 'info' */
   variant?: 'info' | 'success' | 'warning' | 'error';
+  /** Whether the alert can be dismissed by the user. @default false */
   dismissable?: boolean;
 }
 

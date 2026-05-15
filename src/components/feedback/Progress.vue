@@ -1,9 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A progress bar component.
+ * 
+ * @description
+ * Visualizes the completion status of a task or process.
+ * 
+ * @example
+ * ```vue
+ * <Progress :value="45" :max="100" show-value />
+ * ```
+ */
 interface Props {
+  /** The current value of the progress bar. @default 0 */
   value?: number;
+  /** The maximum value of the progress bar. @default 100 */
   max?: number;
+  /** Whether to show the percentage value above the bar. @default false */
   showValue?: boolean;
 }
 

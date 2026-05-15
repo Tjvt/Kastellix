@@ -1,13 +1,32 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A checkbox component for boolean or array-based multiple selection.
+ * 
+ * @description
+ * Supports standalone boolean state or participation in a group via array-based `v-model`.
+ * Also supports an indeterminate state for nested selection logic.
+ * 
+ * @example
+ * ```vue
+ * <Checkbox v-model="termsAccepted" label="I accept the terms" />
+ * ```
+ */
 interface Props {
+  /** The value of the checkbox. Can be boolean or an array of values. @default false */
   modelValue?: boolean | any[];
+  /** The value associated with the checkbox when used in an array-based group. */
   value?: any;
+  /** The label displayed next to the checkbox. */
   label?: string;
+  /** Whether the checkbox is disabled. @default false */
   disabled?: boolean;
+  /** Whether the field is required. Displays an asterisk if a label is present. @default false */
   required?: boolean;
+  /** Whether the checkbox is in an indeterminate state. @default false */
   indeterminate?: boolean;
+  /** Validation error message. If provided, the checkbox will be styled with a red border. */
   error?: string;
 }
 
@@ -19,7 +38,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean | any[]): void;
+  /** Fires when the checked state changes. Payload: new boolean value or updated array. */
+  'update:modelValue': [value: boolean | any[]];
 }>();
 
 const isChecked = computed(() => {

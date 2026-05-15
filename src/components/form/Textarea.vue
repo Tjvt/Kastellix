@@ -1,15 +1,41 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue';
 
+/**
+ * A multi-line text input component.
+ * 
+ * @description
+ * An enhanced textarea supporting auto-resizing based on content, 
+ * labels, hints, and error states.
+ * 
+ * @example
+ * ```vue
+ * <Textarea 
+ *   v-model="bio" 
+ *   label="Biography" 
+ *   placeholder="Tell us about yourself..." 
+ *   auto-resize 
+ * />
+ * ```
+ */
 interface Props {
+  /** The value of the textarea. @default '' */
   modelValue?: string | number;
+  /** The label displayed above the textarea. */
   label?: string;
+  /** The placeholder text when the textarea is empty. @default '' */
   placeholder?: string;
+  /** Validation error message. */
   error?: string;
+  /** Helper text displayed below the textarea. */
   hint?: string;
+  /** Whether the textarea is disabled. @default false */
   disabled?: boolean;
+  /** Whether the textarea is required. @default false */
   required?: boolean;
+  /** The initial number of visible text lines. @default 3 */
   rows?: number;
+  /** Whether the textarea should automatically adjust its height to fit the content. @default false */
   autoResize?: boolean;
 }
 
@@ -23,7 +49,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
+  /** Fires when the textarea value changes. Payload: new value. */
+  'update:modelValue': [value: string];
 }>();
 
 const textareaRef = ref<HTMLTextAreaElement | null>(null);

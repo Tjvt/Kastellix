@@ -1,9 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A placeholder component for loading states.
+ * 
+ * @description
+ * Skeletons are used to represent the shape of content that is still loading, 
+ * reducing perceived latency.
+ * 
+ * @example
+ * ```vue
+ * <Skeleton variant="avatar" />
+ * <Skeleton variant="text" width="60%" />
+ * ```
+ */
 interface Props {
+  /** The type of content to represent. @default 'text' */
   variant?: 'text' | 'avatar' | 'card' | 'image';
+  /** Custom width for the skeleton. */
   width?: string;
+  /** Custom height for the skeleton. */
   height?: string;
 }
 

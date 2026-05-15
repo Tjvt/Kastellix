@@ -1,8 +1,26 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A tag component for categorizing content or displaying attributes.
+ * 
+ * @description
+ * Similar to a Badge but typically used for tags, keywords, or filters. 
+ * Supports an optional close button for removable tags.
+ * 
+ * @example
+ * ```vue
+ * <Tag variant="info" closeable @close="handleRemove">
+ *   Vue.js
+ * </Tag>
+ * ```
+ * 
+ * @slot default — The tag label or content
+ */
 interface Props {
+  /** The visual variant of the tag. @default 'default' */
   variant?: 'default' | 'success' | 'warning' | 'error' | 'info';
+  /** Whether the tag can be closed/removed. Displays a close icon. @default false */
   closeable?: boolean;
 }
 
@@ -12,7 +30,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'close'): void;
+  /** Fires when the close button is clicked. */
+  close: [];
 }>();
 
 const variantClasses = {

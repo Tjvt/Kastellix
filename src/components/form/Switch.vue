@@ -1,7 +1,21 @@
 <script setup lang="ts">
+/**
+ * A toggle switch component for boolean settings.
+ * 
+ * @description
+ * Used as an alternative to a single checkbox for switching between two states (e.g., On/Off).
+ * 
+ * @example
+ * ```vue
+ * <Switch v-model="notificationsEnabled" label="Enable notifications" />
+ * ```
+ */
 interface Props {
+  /** The current state of the switch. */
   modelValue: boolean;
+  /** The label displayed next to the switch. */
   label?: string;
+  /** Whether the switch is disabled. @default false */
   disabled?: boolean;
 }
 
@@ -10,7 +24,8 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
+  /** Fires when the switch state changes. Payload: new boolean value. */
+  'update:modelValue': [value: boolean];
 }>();
 
 const toggle = () => {

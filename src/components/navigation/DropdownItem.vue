@@ -1,6 +1,26 @@
 <script setup lang="ts">
+/**
+ * An individual action or option within a Dropdown.
+ * 
+ * @description
+ * Represents a single clickable item in a dropdown menu. 
+ * Supports an optional icon and a danger variant.
+ * 
+ * @example
+ * ```vue
+ * <DropdownItem danger @click="handleDelete">
+ *   <template #icon><IconTrash /></template>
+ *   Delete Project
+ * DropdownItem>
+ * ```
+ * 
+ * @slot default — The item label
+ * @slot icon — Optional icon to display before the label
+ */
 interface Props {
+  /** Whether the item is disabled. @default false */
   disabled?: boolean;
+  /** Whether the item represents a destructive action. Styles the text red. @default false */
   danger?: boolean;
 }
 

@@ -1,6 +1,24 @@
 <script setup lang="ts">
 import { useToast } from '../../composables/useToast';
 
+/**
+ * A container for displaying toast notifications.
+ * 
+ * @description
+ * Automatically renders active toasts from the `useToast` composable.
+ * Should typically be placed once at the root of the application.
+ * 
+ * @example
+ * ```vue
+ * <!-- App.vue -->
+ * <template>
+ *   <Toaster />
+ *   <router-view />
+ * </template>
+ * ```
+ * 
+ * @uses useToast
+ */
 const { toasts, remove } = useToast();
 
 const variantClasses = {

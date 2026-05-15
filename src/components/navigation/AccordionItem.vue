@@ -1,8 +1,25 @@
 <script setup lang="ts">
 import { inject, computed, type Ref } from 'vue';
 
+/**
+ * An individual item within an Accordion.
+ * 
+ * @description
+ * Represents a collapsible section of content. Must be used inside an `Accordion` component.
+ * 
+ * @example
+ * ```vue
+ * <AccordionItem value="item-1" title="Is it accessible?">
+ *   Yes. It adheres to the WAI-ARIA design pattern.
+ * </AccordionItem>
+ * ```
+ * 
+ * @slot default — The content of the accordion section
+ */
 interface Props {
+  /** A unique identifier for the item. Used by the parent Accordion to track open state. */
   value: string | number;
+  /** The title text displayed in the accordion header. */
   title: string;
 }
 

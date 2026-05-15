@@ -1,8 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+/**
+ * A small status indicator or label.
+ * 
+ * @description
+ * Badges are used to highlight a status, category, or count.
+ * 
+ * @example
+ * ```vue
+ * <Badge variant="success">Active</Badge>
+ * ```
+ * 
+ * @slot default — The badge label
+ */
 interface Props {
+  /** The visual variant of the badge. @default 'default' */
   variant?: 'default' | 'success' | 'warning' | 'error' | 'info';
+  /** The size of the badge. @default 'md' */
   size?: 'sm' | 'md';
 }
 
